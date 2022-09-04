@@ -1,0 +1,48 @@
+<p>
+
+    <mat-toolbar color="primary">
+
+        <ng-container *ngIf="(loggedIn$ | async) !== null">
+
+            <button mat-button [matMenuTriggerFor]="menu">
+
+          <mat-icon>menu</mat-icon>
+      </button>
+
+            <mat-menu #menu="matMenu">
+                <ng-container *ngIf="!loggedIn">
+                    <a routerLink='login'><button mat-menu-item>Login</button></a>
+                    <a routerLink='register'><button mat-menu-item>Register</button></a>
+                    <a routerLink='products-guest'><button mat-menu-item>Products</button></a>
+                </ng-container>
+
+                <a routerLink='gallery'><button mat-menu-item>Gallery</button></a>
+                <a routerLink='home'><button mat-menu-item>Home</button></a>
+                <a routerLink='contactUs'><button mat-menu-item>Contact Us</button></a>
+                <a routerLink='AboutUs'><button mat-menu-item>About Us</button></a>
+
+                <ng-container *ngIf="loggedIn">
+                    <a routerLink='chat'><button mat-menu-item>Chat</button></a>
+                    <a routerLink='orders'><button mat-menu-item>Orders</button></a>
+                    <ng-container *ngIf="IsAdmin">
+                        <a routerLink='User'><button mat-menu-item>Users</button></a>
+                    </ng-container>
+                    <a routerLink='profile'><button mat-menu-item>Profile</button></a>
+                    <a routerLink='products-User'><button mat-menu-item>Products</button></a>
+                    <a><button mat-menu-item (click)="setLogOut()">log out</button></a>
+                </ng-container>
+
+            </mat-menu>
+        </ng-container>
+
+        <span>Fishes Store App</span>
+        <a class="navbar-brand"> <img [src]="img" alt="imperialTropicalLogo" width="50" height="50" class="d-inline-block align-top">
+
+        </a>
+        <span class="example-spacer"></span>
+
+    </mat-toolbar>
+
+</p>
+
+<ng-template #logOut></ng-template>

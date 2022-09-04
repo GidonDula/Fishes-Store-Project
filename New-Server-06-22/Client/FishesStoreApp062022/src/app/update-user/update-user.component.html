@@ -1,0 +1,49 @@
+<div style="display: flex; justify-content: center; background-color: #f0f2f5;">
+    <div style="display: flex; justify-content: center; background-color: #ffffff; padding: 20px;">
+        <form style="display: flex; justify-content: center;" [formGroup]="formdata" (ngSubmit)="onClickSubmit(formdata.value)">
+            <div style="width: fit-content; display: flex; flex-direction: column;">
+                <label for="email">Email:</label>
+
+                <input type="email" class="fortextbox" name="email" placeholder="email" formControlName="email">
+
+                <label for="fname">First Name:</label>
+
+                <input type="text" class="fortextbox" name="fname" placeholder="fname" formControlName="fname">
+
+                <label for="lname">Last name:</label>
+
+                <input type="text" class="fortextbox" name="lname" placeholder="lname" formControlName="lname">
+
+                <label for="phone">Phone number:</label>
+
+                <input type="tel" class="fortextbox" name="phone" placeholder="phone" formControlName="phone">
+
+
+
+                <label for="address">address:</label>
+
+                <input type="text" class="fortextbox" name="addresss" placeholder="address" formControlName="address">
+
+                <label for="ZipCode">Zip Code:</label>
+
+                <input type="text" class="fortextbox" name="ZipCode" placeholder="zipcode" formControlName="ZipCode">
+
+                <label for="Image">Image:</label>
+
+                <input type="file" class="fortextbox" name="Image" placeholder="Image" (change)="fileProgress($event)">
+
+                <img [src]=previewUrl style="margin-left: 50px; margin-top: 50px;" width="200" height="200" alt="Updated User Img">
+
+                <mat-form-field appearance="fill" style="margin-top: 50px;">
+                    <mat-label>Select User Role</mat-label>
+                    <mat-select formControlName="selectedItem">
+                        <mat-option *ngFor="let role of Roles" [value]="role.name">
+                            {{role.name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <input type="submit" [disabled]="!formdata.valid" class="forsubmit" value="Update User Details">
+            </div>
+        </form>
+    </div>
+</div>

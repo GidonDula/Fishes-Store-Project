@@ -1,0 +1,18 @@
+<div style="display: flex; justify-content: center; background-color: #f0f2f5;">
+    <div style="display: flex; justify-content: center; background-color: #ffffff; padding: 20px;">
+        <form style="display: flex; justify-content: center;" [formGroup]="formdata" (ngSubmit)="onClickSubmit(formdata.value)">
+            <div style="width: fit-content; display: flex; flex-direction: column;">
+                <label for="emailid">Email:</label>
+
+                <input type="email" class="fortextbox" name="emailid" placeholder="emailid" formControlName="emailid">
+
+                <label for="passwd">Password</label>
+
+                <input type="password" class="fortextbox" name="passwd" placeholder="passwd" formControlName="passwd">
+
+                <mat-checkbox>Accept Terms</mat-checkbox>
+                <input type="submit" [disabled]="!formdata.valid" class="forsubmit" value="Login">
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,106 @@
+<div style="display: flex; justify-content: center; background-color: #f0f2f5;" *ngIf="IsAdmin">
+    <button mat-button color="primary" class="delete-row-btn" (click)="insertNewProduct()">Insert-New-Product</button>
+    <div style="display: flex; justify-content: center; background-color: #ffffff; padding: 20px;" *ngIf="inserColumn">
+        <form style="display: flex; justify-content: center;" [formGroup]="formdata" (ngSubmit)="onClickSubmit(formdata.value)">
+            <div style="width: fit-content; display: flex; flex-direction: column;">
+                <label for="name">Name:</label>
+
+                <input type="text" class="fortextbox" name="name" placeholder="name" formControlName="name">
+
+                <label for="quantity">Quantity</label>
+
+                <input type="text" class="fortextbox" name="quantity" placeholder="quantity" formControlName="quantity">
+
+                <label for="Price">Price</label>
+
+                <input type="text" class="fortextbox" name="price" placeholder="price" formControlName="price">
+
+                <label for="Image">Image:</label>
+
+                <input type="file" class="fortextbox" name="Image" placeholder="Image" formControlName="Image" (change)="fileProgress($event)">
+
+
+                <input type="submit" [disabled]="!formdata.valid" class="forsubmit" value="AddProduct">
+            </div>
+        </form>
+    </div>
+
+</div>
+
+<div>
+    <table mat-table [dataSource]="productsArr" matSort>
+
+        <ng-container matColumnDef="Id">
+            <th mat-header-cell *matHeaderCellDef>Id</th>
+            <td mat-cell *matCellDef="let row">{{row._id}}</td>
+        </ng-container>
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef>name</th>
+            <td mat-cell *matCellDef="let row">{{row.name}}</td>
+        </ng-container>
+        <ng-container matColumnDef="quantity">
+            <th mat-header-cell *matHeaderCellDef>quantity</th>
+            <td mat-cell *matCellDef="let row">{{row.quantity}}</td>
+        </ng-container>
+        <ng-container matColumnDef="price">
+            <th mat-header-cell *matHeaderCellDef>price</th>
+            <td mat-cell *matCellDef="let row">{{row.price}}</td>
+        </ng-container>
+        <ng-container matColumnDef="ImageUrl">
+            <th mat-header-cell *matHeaderCellDef>ImageUrl</th>
+            <td mat-cell *matCellDef="let row"><img src="{{row.Image}}" width="50" height="50"></td>
+        </ng-container>
+        <ng-container matColumnDef="dateAdded">
+            <th mat-header-cell *matHeaderCellDef>dateAdded</th>
+            <td mat-cell *matCellDef="let row">{{row.dateAdded | date}}</td>
+        </ng-container>
+        <ng-container matColumnDef="delete">
+            <th mat-header-cell *matHeaderCellDef> delete</th>
+            <td mat-cell *matCellDef="let row"><button mat-button color="primary" class="delete-row-btn" data-id={{row._id}} (click)="delete(row._id)">delete</button></td>
+        </ng-container>
+        <ng-container matColumnDef="Update">
+            <th mat-header-cell *matHeaderCellDef>Update</th>
+            <td mat-cell *matCellDef="let row"><button mat-button color="primary" class="update-row-btn" data-id={{row._id}} (click)="update(row._id)">Update</button></td>
+        </ng-container>
+        <ng-container matColumnDef="Order-Quantity">
+            <th mat-header-cell *matHeaderCellDef>Order Quantity</th>
+            <td mat-cell *matCellDef="let row"><input style='width:40px;' type='number' name="orderQuantity" id='order-number' (input)="setOrderQuantity(row._id, $event)"></td>
+        </ng-container>
+        <ng-container matColumnDef="Make-Order">
+            <th mat-header-cell *matHeaderCellDef>Make-Order</th>
+            <td mat-cell *matCellDef="let row"><button mat-button color="danger" class="Make-Order-row-btn" data-id={{row._id}} (click)="makeOrder(row._id)">Make-Order</button></td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns:displayColumns"></tr>
+    </table>
+
+
+
+</div>
+
+<div style="display: flex; justify-content: center; background-color: #f0f2f5;" *ngIf="IsAdmin&&updateColumn">
+    <div style="display: flex; justify-content: center; background-color: #ffffff; padding: 20px;">
+        <form style="display: flex; justify-content: center;" [formGroup]="updateFormdata" (ngSubmit)="onUpdateClickSubmit(updateFormdata.value)">
+            <div style="width: fit-content; display: flex; flex-direction: column;">
+                <label for="name">Name:</label>
+
+                <input type="text" class="fortextbox" name="updateName" placeholder="updateName" formControlName="updateName">
+
+                <label for="quantity">Quantity</label>
+
+                <input type="text" class="fortextbox" name="updateQuantity" placeholder="updateQuantity" formControlName="updateQuantity">
+
+                <label for="Price">Price</label>
+
+                <input type="text" class="fortextbox" name="updatePrice" placeholder="updatePrice" formControlName="updatePrice">
+
+                <label for="Image">Image:</label>
+
+                <input type="file" class="fortextbox" name="updateImage" placeholder="updateImage" (change)="updateFileProgress($event)">
+                <img [src]=updatePreviewUrl style="margin-left: 50px; margin-top: 50px;" width="200" height="200" alt="Updated User Img">
+                <input style="margin-top: 50px;" type="submit" [disabled]="!updateFormdata.valid" class="forsubmit" value="UpdateProduct">
+            </div>
+        </form>
+    </div>
+</div>

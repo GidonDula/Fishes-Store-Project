@@ -1,0 +1,12 @@
+<div style=" grid-template-columns: repeat(3,1fr); display: grid; padding-left: 200px; grid-gap: 30px; width: 70%;">
+    <div *ngFor="let product of productsArr">
+
+        <img src="{{product.Image}}" width="200" height="200">
+
+        <h2>{{product.name}}</h2>
+
+        <p>quantity {{product.quantity}},price {{product.price}}</p>
+
+
+    </div>
+</div>

@@ -1,0 +1,72 @@
+<div>
+    <table mat-table [dataSource]="OrdersArr" matSort>
+        >
+        <ng-container matColumnDef="Id">
+            <th mat-header-cell *matHeaderCellDef>Id</th>
+            <td mat-cell *matCellDef="let row">{{row._id}}</td>
+        </ng-container>
+        <ng-container matColumnDef="ProductId">
+            <th mat-header-cell *matHeaderCellDef>Product-Id</th>
+            <td mat-cell *matCellDef="let row">{{row.ProductId}}</td>
+        </ng-container>
+        <ng-container matColumnDef="UserId">
+            <th mat-header-cell *matHeaderCellDef>User-Id</th>
+            <td mat-cell *matCellDef="let row">{{row.UserId}}</td>
+        </ng-container>
+        <ng-container matColumnDef="UserEmail">
+            <th mat-header-cell *matHeaderCellDef>User-Email</th>
+            <td mat-cell *matCellDef="let row">{{row.UserEmail}}</td>
+        </ng-container>
+        <ng-container matColumnDef="ProductName">
+            <th mat-header-cell *matHeaderCellDef>ProductName</th>
+            <td mat-cell *matCellDef="let row">{{row.ProductName}}</td>
+        </ng-container>
+        <ng-container matColumnDef="OrderdQuantity">
+            <th mat-header-cell *matHeaderCellDef>quantity</th>
+            <td mat-cell *matCellDef="let row">{{row.OrderdQuantity}}</td>
+        </ng-container>
+
+
+        <ng-container matColumnDef="OrderDate">
+            <th mat-header-cell *matHeaderCellDef>OrderDate</th>
+            <td mat-cell *matCellDef="let row">{{row.OrderDate | date}}</td>
+        </ng-container>
+        <ng-container matColumnDef="delete">
+            <th mat-header-cell *matHeaderCellDef> delete</th>
+            <td mat-cell *matCellDef="let row"><button mat-button color="primary" class="delete-row-btn" data-id={{row._id}} (click)="delete(row._id)">delete</button></td>
+        </ng-container>
+        <ng-container matColumnDef="Update">
+            <th mat-header-cell *matHeaderCellDef>Update</th>
+            <td mat-cell *matCellDef="let row"><button mat-button color="primary" class="update-row-btn" data-id={{row._id}} (click)="update(row._id)">Update</button></td>
+        </ng-container>
+
+
+        <tr mat-header-row *matHeaderRowDef="displayColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns:displayColumns"></tr>
+    </table>
+
+
+
+</div>
+
+<div style="display: flex; justify-content: center; background-color: #f0f2f5;" *ngIf="updateColumn">
+    <div style="display: flex; justify-content: center; background-color: #ffffff; padding: 20px;">
+        <form style="display: flex; justify-content: center;" [formGroup]="updateFormdata" (ngSubmit)="onUpdateClickSubmit(updateFormdata.value)">
+            <div style="width: fit-content; display: flex; flex-direction: column;">
+                <label for="quantity">Quantity</label>
+
+                <input type="text" class="fortextbox" name="updateQuantity" placeholder="updateQuantity" formControlName="updateQuantity">
+
+                <mat-form-field style="margin-top: 50px;" appearance="fill">
+                    <mat-label>Select New Product Name</mat-label>
+                    <mat-select formControlName="selectedName">
+                        <mat-option *ngFor="let name of  availableNames" [value]="name">
+                            {{name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <input type="submit" [disabled]="!updateFormdata.valid" class="forsubmit" value="UpdateProductOrderd">
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,27 @@
+<div style="text-align: center;">
+
+    <iframe width="1400" height="500" src="https://www.youtube.com/embed/mhzp9Rvw5cc?&autoplay=1&&mute=1&loop=1&showinfo=0&controls=0&playlist=mhzp9Rvw5cc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen></iframe>
+
+</div>
+<br/>
+<br/>
+<div style=" grid-template-columns: repeat(3,1fr); display: grid; padding-left: 200px; grid-gap: 30px; width: 50%;">
+    <div *ngFor="let product of productsArr">
+        <img src="{{product.Image}}" width="200" height="200">
+
+        <h2>{{product.name}}</h2>
+
+        <p>quantity {{product.quantity}},price {{product.price}}</p>
+
+
+
+    </div>
+</div>
+<div>
+    <h3> LiveAquaria is committed to offering sustainably raised aquatic life that is either aquacultured or responsibly harvested, which includes careful attention to both the animals and the habitat.</h3>
+    <p>LiveAquaria is your single destination for all things aquatic. Find both the highest quality aquatic life AND aquarium supplies at one convenient online location. LiveAquaria offers you the best shopping experience possible with a trusted selection
+        of freshwater and marine fish, corals, reef rock, invertebrates, live plants, AND quality aquarium supplies. . . all at great prices! Our team takes extraordinary measures to ensure your order receives the best possible attention and care it deserves
+        until it arrives safely to your home </p>
+    <button style="text-align: center;" mat-button color="primary" (click)="AboutUs()"> to about Us Page </button>
+</div>

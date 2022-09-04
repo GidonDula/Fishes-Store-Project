@@ -1,0 +1,55 @@
+<div style="display: flex; justify-content: center; background-color: #f0f2f5;">
+    <div style="display: flex; justify-content: center; background-color: #ffffff; padding: 20px;">
+        <form style="display: flex; justify-content: center;" [formGroup]="formdata" (ngSubmit)="onClickSubmit(formdata.value)">
+            <div style="width: fit-content; display: flex; flex-direction: column;">
+                <label for="emailid">Email:</label>
+
+                <input type="email" class="fortextbox" name="emailid" placeholder="emailid" formControlName="emailid">
+
+                <label for="fname">First Name:</label>
+
+                <input type="text" class="fortextbox" name="fname" placeholder="fname" formControlName="fname">
+
+                <label for="lname">Last name:</label>
+
+                <input type="text" class="fortextbox" name="lname" placeholder="lname" formControlName="lname">
+
+                <label for="phone">Phone number:</label>
+
+                <input type="tel" class="fortextbox" name="phone" placeholder="phone" formControlName="phone">
+
+                <label for="passwd">Password</label>
+
+                <input type="password" class="fortextbox" name="passwd" placeholder="passwd" formControlName="passwd">
+
+                <label for="REpasswd">REPassword</label>
+
+                <input type="password" class="fortextbox" name="REpasswd" placeholder="REpasswd" formControlName="REpasswd">
+
+
+                <label for="address">address:</label>
+
+                <input type="text" class="fortextbox" name="addresss" placeholder="address" formControlName="address">
+
+                <label for="ZipCode">Zip Code:</label>
+
+                <input type="text" class="fortextbox" name="ZipCode" placeholder="zipcode" formControlName="ZipCode">
+
+                <label for="Image">Image:</label>
+
+                <input type="file" class="fortextbox" name="Image" placeholder="Image" formControlName="Image" (change)="fileProgress($event)">
+
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Select User Role</mat-label>
+                    <mat-select formControlName="selectedItem">
+                        <mat-option *ngFor="let role of Roles" [value]="role.name">
+                            {{role.name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <input type="submit" [disabled]="!formdata.valid" class="forsubmit" value="Register">
+            </div>
+        </form>
+    </div>
+</div>

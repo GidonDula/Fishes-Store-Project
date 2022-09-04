@@ -1,0 +1,70 @@
+<section class="full-width">
+    <h2>Contact Live Aquaria</h2>
+    <div class="quater-width"> <img width="100px" height="100px" src="../assets/Fish/contact_us_form_call_icon.jpg " alt="call us">
+        <h4>Call Us</h4>
+        <p>1-800-334-3699 <br> 8:30 am - 5:00 pm CST,<br> Monday - Friday</p>
+    </div>
+    <div class="quater-width"> <img width="100px" height="100px" src="../assets/Fish/contact_us_form_address_icon.jpg " alt="Address">
+        <h4>Address</h4>
+        <p>LiveAquaria.com <br> 2389 Air Park Road <br> Rhinelander, WI 54501</p>
+    </div>
+    <div class="quater-width"> <img width="100px" height="100px" src="../assets/Fish/contact_us_form_email_icon.jpg " alt="Email">
+        <h4> Email Us </h4>
+        <p>CustomerService@LiveAquaria.com </p>
+    </div>
+    <div class="quater-width"><img width="100px" height="100px" src="../assets/Fish/contact_us_form_chat_icon.jpg " alt="Chat">
+        <h4> Live Help </h4>
+        <p> 8:30 am - 5:00 pm CST, <br> Monday - Saturday </p>
+    </div>
+</section>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<section style="display: flex; justify-content: center; background-color: #f0f2f5;">
+    <div style="display: flex; justify-content: center; background-color: #ffffff; padding: 20px;">
+
+
+        <form style="display: flex; justify-content: center;" [formGroup]="formData" (ngSubmit)="onClickSubmit(formData.value)">
+
+            <div style="width: fit-content; display: flex; flex-direction: column;">
+
+                <label for="emailid">Company  Email:</label>
+
+                <input type="email" class="fortextbox" name="companyEmail" placeholder="company-Email" formControlName="companyEmail">
+
+
+                <label for="fname">First Name:</label>
+
+                <input type="text" class="fortextbox" name="fname" placeholder="fname" formControlName="fname">
+
+
+                <label for="lname">Last name:</label>
+
+                <input type="text" class="fortextbox" name="lname" placeholder="lname" formControlName="lname">
+
+                <label for="phone">Phone number:</label>
+
+                <input type="tel" class="fortextbox" name="phone" placeholder="phone" formControlName="phone">
+
+                <label for="phone">Company Phone :</label>
+
+                <input type="tel" class="fortextbox" name="companyPhone" placeholder="companyPhone" formControlName="companyPhone">
+
+                <label for="message"> Your Message</label>
+                <textarea name="guestMessage" id="message" cols="30" rows="10" class="fortextbox" placeholder="Message" formControlName="guestMessage"></textarea>
+                <input type="submit" [disabled]="!formData.valid" class="forsubmit" value="sendMessage">
+            </div>
+        </form>
+
+    </div>
+</section>

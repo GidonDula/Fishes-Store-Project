@@ -1,0 +1,22 @@
+.full-width {
+    width: 100%;
+    padding: 0 20px;
+    margin: 2% 0 !important;
+    box-sizing: border-box;
+}
+
+.full-width h2 {
+    font-size: 32px;
+    line-height: normal;
+    margin: 15px 0 5px 0;
+    color: #294f8d;
+}
+
+.quater-width {
+    width: 25%;
+    float: left;
+    margin: 1% 0;
+    padding: 0 0 20px 0;
+    text-align: center;
+    box-sizing: border-box;
+}

@@ -1,0 +1,17 @@
+.example-card {
+    max-width: 400px;
+    max-height: 800px;
+}
+
+.flex-container {
+    display: flex;
+    justify-content: center;
+}
+
+.online {
+    float: right;
+    font-size: 50px;
+    color: #fff;
+    text-align: center;
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #085a05, 0 0 20px #085a05, 0 0 25px #085a05, 0 0 30px #085a05, 0 0 35px #085a05;
+}
